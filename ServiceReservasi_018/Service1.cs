@@ -74,7 +74,30 @@ namespace ServiceReservasi_018
 
         public List<CekLokasi> ReviewLokasi()
         {
-            throw new NotImplementedException();
+            List<CekLokasi> Check = new List<CekLokasi>();
+            try
+            {
+                string sql = "select ID_Lokasi, Nama_Lokasi, Deskripsi_Full, Kuota from dbo.Lokasi";
+                connection = new SqlConnection(connectionString);
+                com = new SqlCommand(sql, connection);
+                connection.Open();
+                SqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    DetailLokasi data = new DetailLokasi();
+                    data.IDLokasi = reader.GetString(0);
+                    data.NamaLokasi = reader.GetString(1);
+                    data.DeskripsiFull = reader.GetString(2);
+                    data.Kuota = reader.GetInt32(3);
+                    Check.AsReadOnly();
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Check;
         }
 
         public string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelpon, int JumlahPemesanan, string IDLokasi)
