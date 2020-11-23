@@ -46,6 +46,7 @@ namespace ServiceReservasi_018
         public string DeskripsiFull { get; set; }
         [DataMember]
         public int Kuota { get; set; }
+        public string IDPemesanan { get; internal set; }
     }
 
     [DataContract]
