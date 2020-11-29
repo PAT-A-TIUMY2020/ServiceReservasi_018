@@ -75,7 +75,23 @@ namespace ServiceReservasi_018
 
         public string deletePemesanan(string IDPemesanan)
         {
-            throw new NotImplementedException();
+            string a = "gagal";
+            try
+            {
+                string sql = "delete from dbo.Pemesanan where ID_reservasi = '"+IDPemesanan+"'";
+                connection = new SqlConnection(connectionString);
+                com = new SqlCommand(sql, connection);
+                connection.Open();
+                com.ExecuteNonQuery();
+                connection.Close();
+                a = "Sukses";
+            }
+            catch (Exception es)
+            {
+                Console.WriteLine(es);
+            }
+
+            return a;
         }
 
         public string editPemesanan(string IDPemesanan, string NamaCustomer, string No_telpon)
