@@ -32,7 +32,7 @@ namespace ServiceReservasi_018
         [DataMember]
         public string NamaLokasi { get; set; }
         [DataMember]
-        public string Deskripsi { get; set; }
+        public string DeskripsiSingkat { get; set; }
     }
 
     [DataContract]
@@ -46,7 +46,6 @@ namespace ServiceReservasi_018
         public string DeskripsiFull { get; set; }
         [DataMember]
         public int Kuota { get; set; }
-        public string IDPemesanan { get; internal set; }
     }
 
     [DataContract]
